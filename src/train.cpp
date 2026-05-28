@@ -36,12 +36,11 @@ int Train::getLength() {
         countOp++;
         if (current->light) {
             current->light = false;
-            const Car* back = current;
             for (int i = 0; i < steps; i++) {
-                back = back->prev;
+                current = current->prev;
                 countOp++;
             }
-            if (!back->light) {
+            if (!current->light) {
                 return steps;
             }
         }
